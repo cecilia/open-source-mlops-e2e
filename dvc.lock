@@ -62,6 +62,15 @@ stages:
       md5: 9f384869826bdf146e6ff572c85d0d1e.dir
       size: 722258
       nfiles: 4
+      files:
+      - md5: c7ff4cca4220bce33a14e89de861e2c5
+        relpath: X_test.pkl
+      - md5: da4bdc53955002a05bf9f0d15aa15094
+        relpath: X_train.pkl
+      - md5: b7411d516759b2184cc982a914d950e2
+        relpath: y_test.pkl
+      - md5: 8647275e1303869cfd3c6224ac6ebd3f
+        relpath: y_train.pkl
     - path: src/stages/train.py
       md5: 2c9c73e54f3d0f11ad7a855e7089278c
       size: 2126
@@ -90,11 +99,11 @@ stages:
           model_path: models/clf-model.joblib
           params:
             n_estimators: 170
-            max_depth: 20
+            max_depth: 25
     outs:
     - path: models/clf-model.joblib
-      md5: ef799cab872146e9de22caa863dd7397
-      size: 17602264
+      md5: 459f0a59fad0ab884ec4ef7e7251ee89
+      size: 18084952
   eval:
     cmd: python src/stages/eval.py --config=params.yaml
     deps:
@@ -102,9 +111,18 @@ stages:
       md5: 9f384869826bdf146e6ff572c85d0d1e.dir
       size: 722258
       nfiles: 4
+      files:
+      - md5: c7ff4cca4220bce33a14e89de861e2c5
+        relpath: X_test.pkl
+      - md5: da4bdc53955002a05bf9f0d15aa15094
+        relpath: X_train.pkl
+      - md5: b7411d516759b2184cc982a914d950e2
+        relpath: y_test.pkl
+      - md5: 8647275e1303869cfd3c6224ac6ebd3f
+        relpath: y_train.pkl
     - path: models/clf-model.joblib
-      md5: ef799cab872146e9de22caa863dd7397
-      size: 17602264
+      md5: 459f0a59fad0ab884ec4ef7e7251ee89
+      size: 18084952
     - path: src/stages/eval.py
       md5: a2a26bf96e68e2cfbe16b89d15f91f37
       size: 2430
@@ -136,14 +154,14 @@ stages:
           model_path: models/clf-model.joblib
           params:
             n_estimators: 170
-            max_depth: 20
+            max_depth: 25
     outs:
     - path: metrics.json
-      md5: 58a5b75323714d2e93e8c436a1983a70
-      size: 67
+      md5: 4433023c527fda94e8544580c9e4adfa
+      size: 66
     - path: reports/feat_imp.csv
-      md5: bace8c418418b609c2c39c5be3bcb244
-      size: 185
+      md5: 12beef8f429aa973862e4d2efcc6cfb1
+      size: 186
     - path: reports/figures/cm.png
-      md5: ec5c29ad9c27cebee3947e0a2e6a7d23
-      size: 10345
+      md5: ed32e951f277f46286cd38ee667161ca
+      size: 9853
