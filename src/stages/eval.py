@@ -72,6 +72,3 @@ if __name__ == '__main__':
     args = args_parser.parse_args()
     params = load_params(params_path=args.config)
     eval(params)
-python src/stages/data_split.py --config params.yaml
-python src/stages/train.py --config params.yaml
-python src/stages/eval.py --config params.yaml
