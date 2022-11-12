@@ -7,6 +7,11 @@ stages:
       md5: 6920135c1a76a56a030a224fb82afb28.dir
       size: 466888
       nfiles: 2
+      files:
+      - md5: 78f8f2e8ac2b7b2b6aa4d75fcc402f47
+        relpath: Churn_Modelling_France.csv
+      - md5: a2eb40907d681c63a5cddcd43013ca6d
+        relpath: Churn_Modelling_Spain.csv
     - path: src/stages/data_split.py
       md5: 9fbed283d435189303ad63ed525ac366
       size: 1435
@@ -37,6 +42,19 @@ stages:
       md5: 9f384869826bdf146e6ff572c85d0d1e.dir
       size: 722258
       nfiles: 4
+      files:
+      - size: 135795
+        md5: c7ff4cca4220bce33a14e89de861e2c5
+        relpath: X_test.pkl
+      - size: 405444
+        md5: da4bdc53955002a05bf9f0d15aa15094
+        relpath: X_train.pkl
+      - size: 45565
+        md5: b7411d516759b2184cc982a914d950e2
+        relpath: y_test.pkl
+      - size: 135454
+        md5: 8647275e1303869cfd3c6224ac6ebd3f
+        relpath: y_train.pkl
   train:
     cmd: python src/stages/train.py --config=params.yaml
     deps:
@@ -44,6 +62,15 @@ stages:
       md5: 9f384869826bdf146e6ff572c85d0d1e.dir
       size: 722258
       nfiles: 4
+      files:
+      - md5: c7ff4cca4220bce33a14e89de861e2c5
+        relpath: X_test.pkl
+      - md5: da4bdc53955002a05bf9f0d15aa15094
+        relpath: X_train.pkl
+      - md5: b7411d516759b2184cc982a914d950e2
+        relpath: y_test.pkl
+      - md5: 8647275e1303869cfd3c6224ac6ebd3f
+        relpath: y_train.pkl
     - path: src/stages/train.py
       md5: 2c9c73e54f3d0f11ad7a855e7089278c
       size: 2126
@@ -84,6 +111,15 @@ stages:
       md5: 9f384869826bdf146e6ff572c85d0d1e.dir
       size: 722258
       nfiles: 4
+      files:
+      - md5: c7ff4cca4220bce33a14e89de861e2c5
+        relpath: X_test.pkl
+      - md5: da4bdc53955002a05bf9f0d15aa15094
+        relpath: X_train.pkl
+      - md5: b7411d516759b2184cc982a914d950e2
+        relpath: y_test.pkl
+      - md5: 8647275e1303869cfd3c6224ac6ebd3f
+        relpath: y_train.pkl
     - path: models/clf-model.joblib
       md5: a68ba4d9e3d0ef4e3354a31ba2a48724
       size: 20682184
