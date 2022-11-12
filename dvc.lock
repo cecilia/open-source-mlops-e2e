@@ -165,3 +165,69 @@ stages:
     - path: reports/figures/cm.png
       md5: ed32e951f277f46286cd38ee667161ca
       size: 9853
+  train_drift_detector:
+    cmd: python src/stages/drift_detector.py --config=params.yaml
+    deps:
+    - path: data/processed
+      md5: 9f384869826bdf146e6ff572c85d0d1e.dir
+      size: 722258
+      nfiles: 4
+      files:
+      - md5: c7ff4cca4220bce33a14e89de861e2c5
+        relpath: X_test.pkl
+      - md5: da4bdc53955002a05bf9f0d15aa15094
+        relpath: X_train.pkl
+      - md5: b7411d516759b2184cc982a914d950e2
+        relpath: y_test.pkl
+      - md5: 8647275e1303869cfd3c6224ac6ebd3f
+        relpath: y_train.pkl
+    - path: models/clf-model.joblib
+      md5: 459f0a59fad0ab884ec4ef7e7251ee89
+      size: 18084952
+    - path: src/stages/drift_detector.py
+      md5: 046d9c962b279c852bac5fec0cbb3077
+      size: 1388
+    params:
+      params.yaml:
+        base:
+          project: bank_customer_churn
+          raw_data_dir: data/raw
+          countries:
+          - France
+          - Spain
+          feat_cols:
+          - CreditScore
+          - Age
+          - Tenure
+          - Balance
+          - NumOfProducts
+          - HasCrCard
+          - IsActiveMember
+          - EstimatedSalary
+          targ_col: Exited
+          random_state: 42
+        data_split:
+          test_size: 0.25
+          processed_data_dir: data/processed
+        train:
+          model_type: randomforest
+          model_dir: models
+          model_path: models/clf-model.joblib
+          params:
+            n_estimators: 170
+            max_depth: 25
+    outs:
+    - path: models/drift_detector
+      md5: d0cb1bba7508115f7e0e7a6faa831b9b.dir
+      size: 483609
+      nfiles: 3
+      files:
+      - size: 414
+        md5: 701f19ce63efeef27a6cebdad21b6940
+        relpath: config.toml
+      - size: 3643
+        md5: d7b29d87844b6f1c4a47c318b7dc236b
+        relpath: preprocess_fn/function.dill
+      - size: 479552
+        md5: 0ef2fc9488c357094bb4a4323df4be26
+        relpath: x_ref.npy
